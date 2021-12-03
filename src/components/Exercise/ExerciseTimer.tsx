@@ -5,7 +5,7 @@
  */
 
 import React, { FC, useEffect, useState } from "react";
-import { Animated, StyleSheet } from "react-native";
+import { Animated, StyleSheet, TextStyle } from "react-native";
 import { useInterval } from "../../hooks/useInterval";
 import { useOnMount } from "../../hooks/useOnMount";
 import { animate } from "../../utils/animate";
@@ -13,7 +13,8 @@ import { formatTimer } from "../../utils/formatTimer";
 import { buttonSize } from "../ButtonAnimator/ButtonAnimator";
 import { fontMono } from "../../config/fonts";
 
-type Props = {
+export type Props = {
+  styles?: typeof defaultStyles;
   limit: number;
   onLimitReached: () => void;
 };
@@ -65,7 +66,7 @@ export const ExerciseTimer: FC<Props> = ({ limit, onLimitReached }) => {
   );
 };
 
-const styles = StyleSheet.create({
+export const defaultStyles = StyleSheet.create({
   container: {
     marginTop: buttonSize,
   },
@@ -74,5 +75,5 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: "white",
     ...fontMono,
-  },
+  } as TextStyle,
 });

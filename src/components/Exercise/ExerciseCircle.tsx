@@ -19,7 +19,8 @@ import { fontThin } from "../../config/fonts";
 import { playSound } from "../../services/sound";
 import { Step } from "../../types/Step";
 
-type Props = {
+export type Props = {
+  styles?: typeof defaultStyles;
   steps: Step[];
   vibrationEnabled: boolean;
 };
@@ -27,7 +28,11 @@ type Props = {
 const circleSize = deviceWidth * 0.8;
 const fadeInAnimDuration = 400;
 
-export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
+export const ExerciseCircle: FC<Props> = ({
+  styles = defaultStyles,
+  steps,
+  vibrationEnabled,
+}) => {
   const [showUpAnimVal] = useState(new Animated.Value(0));
   const [scaleAnimVal] = useState(new Animated.Value(0));
   const [textAnimVal] = useState(new Animated.Value(1));
@@ -184,7 +189,7 @@ export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
   );
 };
 
-const styles = StyleSheet.create({
+export const defaultStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
