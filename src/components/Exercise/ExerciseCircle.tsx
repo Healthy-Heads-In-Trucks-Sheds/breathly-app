@@ -5,7 +5,7 @@
  */
 
 import React, { FC, useState } from "react";
-import { Animated, StyleSheet, Platform, Vibration } from "react-native";
+import { Animated, StyleSheet } from "react-native";
 import { deviceWidth } from "../../config/constants";
 import { useOnMount } from "../../hooks/useOnMount";
 import { animate } from "../../utils/animate";
@@ -17,7 +17,6 @@ import { loopAnimations } from "../../utils/loopAnimations";
 import { ExerciseCircleDots } from "./ExerciseCircleDots";
 import { fontThin } from "../../config/fonts";
 import { playSound } from "../../services/sound";
-import ReactNativeHaptic from "react-native-haptic";
 import { Step } from "../../types/Step";
 
 type Props = {
@@ -89,14 +88,14 @@ export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
     } else if (step.id === "afterInhale") {
       playSound("lauraHold");
     }
-    if (vibrationEnabled) {
-      if (Platform.OS === "ios") {
-        ReactNativeHaptic.generate("impactHeavy");
-        setTimeout(() => ReactNativeHaptic.generate("impactHeavy"), 100);
-      } else if (Platform.OS === "android") {
-        Vibration.vibrate(200);
-      }
-    }
+    // if (vibrationEnabled) {
+    //   if (Platform.OS === "ios") {
+    //     ReactNativeHaptic.generate("impactHeavy");
+    //     setTimeout(() => ReactNativeHaptic.generate("impactHeavy"), 100);
+    //   } else if (Platform.OS === "android") {
+    //     Vibration.vibrate(200);
+    //   }
+    // }
   };
 
   const startAnimationSteps = () => {
