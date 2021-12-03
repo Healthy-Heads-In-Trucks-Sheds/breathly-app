@@ -10,7 +10,6 @@ import { useOnMount } from "../../hooks/useOnMount";
 import { animate } from "../../utils/animate";
 import { delay } from "../../utils/delay";
 import { interpolateTranslateY } from "../../utils/interpolate";
-import { fontThin } from "../../config/fonts";
 
 type Props = {
   onComplete: () => void;
@@ -60,18 +59,6 @@ export const ExerciseInterlude: FC<Props> = ({ onComplete }) => {
     };
   });
 
-  const containerAnimatedStyle = {
-    opacity: containerAnimVal.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 1],
-    }),
-    transform: [
-      interpolateTranslateY(containerAnimVal, {
-        inputRange: [0, 1],
-        outputRange: [0, 8],
-      }),
-    ],
-  };
   const subtitleAnimatedStyle: Animated.AnimatedProps<ViewStyle> = {
     opacity: subtitleAnimVal.interpolate({
       inputRange: [0, 1],
@@ -86,7 +73,7 @@ export const ExerciseInterlude: FC<Props> = ({ onComplete }) => {
   };
 
   return (
-    <Animated.View style={[styles.container, containerAnimatedStyle]}>
+    <Animated.View style={[styles.container]}>
       <Text style={styles.title}>Relax</Text>
       <Animated.View style={subtitleAnimatedStyle}>
         <Animated.Text style={[styles.subtitleText]}>
@@ -102,17 +89,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    height: "100%",
   },
   title: {
     fontSize: 50,
     textAlign: "center",
     color: "white",
-    ...fontThin,
   },
   subtitleText: {
     fontSize: 20,
     textAlign: "center",
     color: "white",
-    ...fontThin,
   },
 });
