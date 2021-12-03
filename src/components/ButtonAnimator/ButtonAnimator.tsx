@@ -8,7 +8,6 @@ import React, { FC, useState } from "react";
 import { Animated, StyleSheet, ViewStyle } from "react-native";
 import { deviceHeight } from "../../config/constants";
 import { images } from "../../config/images";
-import { useAppContext } from "../../context/AppContext";
 import { useOnMount } from "../../hooks/useOnMount";
 import { useOnUpdate } from "../../hooks/useOnUpdate";
 import { animate } from "../../utils/animate";
@@ -17,6 +16,7 @@ import {
   interpolateTranslateY,
 } from "../../utils/interpolate";
 import { Touchable } from "../../common/Touchable";
+import { hhtsDarkBlue80Percent } from "../../../../styles/colour";
 
 export const buttonSize = 60;
 export const buttonAnimatorContentHeight = deviceHeight - buttonSize * 2;
@@ -41,7 +41,6 @@ type Status =
   | "to-back";
 
 export const ButtonAnimator: FC<Props> = ({ visible, onClosePress }) => {
-  const { theme } = useAppContext();
   const [visibilityAnimVal] = useState(new Animated.Value(0));
   const [expandAnimVal] = useState(new Animated.Value(0));
   const [status, setStatus] = useState<Status>("showing");
@@ -134,7 +133,7 @@ export const ButtonAnimator: FC<Props> = ({ visible, onClosePress }) => {
           >
             <Animated.Image
               source={images.iconClose}
-              style={[styles.icon, { tintColor: theme.mainColor }]}
+              style={[styles.icon, styles.stopButtonImage]}
             />
           </Animated.View>
         </Touchable>
@@ -199,6 +198,9 @@ const styles = StyleSheet.create({
   },
   stopButton: {
     backgroundColor: "white",
+  },
+  stopButtonImage: {
+    tintColor: hhtsDarkBlue80Percent,
   },
   icon: {
     width: buttonSize / 3,
