@@ -166,19 +166,21 @@ export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
   };
 
   return (
-    <Animated.View style={[styles.container, containerAnimatedStyle]}>
-      <Animated.View style={[styles.circle, circleAnimatedStyle]} />
-      <Animated.View style={[styles.circleMin, circleMinAnimatedStyle]} />
-      <Animated.View style={styles.circleMax} />
-      <Animated.View style={[styles.content, contentAnimatedStyle]}>
-        <Animated.Text style={styles.text}>{currentStep.label}</Animated.Text>
-        <ExerciseCircleDots
-          visible={currentStep.showDots}
-          numberOfDots={3}
-          totalDuration={currentStep.duration}
-        />
+    <>
+      <Animated.View style={[styles.container, containerAnimatedStyle]}>
+        <Animated.View style={[styles.circle, circleAnimatedStyle]} />
+        <Animated.View style={[styles.circleMin, circleMinAnimatedStyle]} />
+        <Animated.View style={styles.circleMax} />
+        <Animated.View style={[styles.content, contentAnimatedStyle]}>
+          <Animated.Text style={styles.text}>{currentStep.label}</Animated.Text>
+          <ExerciseCircleDots
+            visible={currentStep.showDots}
+            numberOfDots={3}
+            totalDuration={currentStep.duration}
+          />
+        </Animated.View>
       </Animated.View>
-    </Animated.View>
+    </>
   );
 };
 
