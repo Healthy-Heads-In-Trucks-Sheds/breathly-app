@@ -44,7 +44,7 @@ export const ExerciseTimer: FC<Props> = ({ limit, onLimitReached }) => {
       onLimitReached();
     }
     // TODO: Check this
-    // eslint-disable-next-line react-app/react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [limit, elapsedTime]);
 
   const containerAnimatedStyle = {
