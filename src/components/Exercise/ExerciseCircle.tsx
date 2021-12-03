@@ -12,23 +12,17 @@ import { ExerciseCircleDots } from "./ExerciseCircleDots";
 import { fontThin } from "../../config/fonts";
 import { playSound } from "../../services/sound";
 import ReactNativeHaptic from "react-native-haptic";
-import { GuidedBreathingMode } from "../../types/GuidedBreathingMode";
 import { Step } from "../../types/Step";
 
 type Props = {
   steps: Step[];
-  guidedBreathingMode: GuidedBreathingMode;
   vibrationEnabled: boolean;
 };
 
 const circleSize = deviceWidth * 0.8;
 const fadeInAnimDuration = 400;
 
-export const ExerciseCircle: FC<Props> = ({
-  steps,
-  guidedBreathingMode,
-  vibrationEnabled,
-}) => {
+export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
   const [showUpAnimVal] = useState(new Animated.Value(0));
   const [scaleAnimVal] = useState(new Animated.Value(0));
   const [textAnimVal] = useState(new Animated.Value(1));
@@ -76,24 +70,18 @@ export const ExerciseCircle: FC<Props> = ({
     setCurrentStepIndex(stepIndex);
     const step = activeSteps[stepIndex];
     if (step.id === "exhale") {
-      if (guidedBreathingMode === "laura") playSound("lauraBreatheOut");
-      if (guidedBreathingMode === "paul") playSound("paulBreatheOut");
-      if (guidedBreathingMode === "bell") playSound("cueBell1");
+      playSound("lauraBreatheOut");
       showCirlceMinAnimation.start();
     } else if (step.id === "inhale") {
-      if (guidedBreathingMode === "laura") playSound("lauraBreatheIn");
-      if (guidedBreathingMode === "paul") playSound("paulBreatheIn");
-      if (guidedBreathingMode === "bell") playSound("cueBell1");
+      playSound("lauraBreatheIn");
+
       hideCirlceMinAnimation.start();
     } else if (step.id === "afterExhale") {
-      if (guidedBreathingMode === "laura") playSound("lauraHold");
-      if (guidedBreathingMode === "paul") playSound("paulHold");
-      if (guidedBreathingMode === "bell") playSound("cueBell2");
+      playSound("lauraHold");
+
       hideCirlceMinAnimation.start();
     } else if (step.id === "afterInhale") {
-      if (guidedBreathingMode === "laura") playSound("lauraHold");
-      if (guidedBreathingMode === "paul") playSound("paulHold");
-      if (guidedBreathingMode === "bell") playSound("cueBell2");
+      playSound("lauraHold");
     }
     if (vibrationEnabled) {
       if (Platform.OS === "ios") {

@@ -10,7 +10,7 @@ import { ExerciseComplete } from "./ExerciseComplete";
 import { ExerciseInterlude } from "./ExerciseInterlude";
 import { ExerciseTimer } from "./ExerciseTimer";
 import { useOnMount } from "../../hooks/useOnMount";
-import { initializeAudio, releaseAudio, playSound } from "../../services/sound";
+import { initializeAudio, releaseAudio } from "../../services/sound";
 
 type Status = "interlude" | "running" | "completed";
 
@@ -35,9 +35,10 @@ export const Exercise: FC<Props> = () => {
   });
 
   useOnMount(() => {
-    if (guidedBreathingMode !== "disabled") initializeAudio();
+    initializeAudio();
+
     return () => {
-      if (guidedBreathingMode !== "disabled") releaseAudio();
+      releaseAudio();
     };
   });
 
@@ -48,7 +49,6 @@ export const Exercise: FC<Props> = () => {
   const handleTimeLimitReached = () => {
     unmountContentAnimation.start(({ finished }) => {
       if (finished) {
-        if (guidedBreathingMode !== "disabled") playSound("endingBell");
         setStatus("completed");
       }
     });

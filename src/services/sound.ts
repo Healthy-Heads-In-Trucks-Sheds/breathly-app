@@ -6,12 +6,6 @@ const soundEffects = {
   lauraBreatheIn: { path: "laurainhale.mp3", sound: null as any },
   lauraBreatheOut: { path: "lauraexhale.mp3", sound: null as any },
   lauraHold: { path: "laurahold.mp3", sound: null as any },
-  paulBreatheIn: { path: "paulinhale.mp3", sound: null as any },
-  paulBreatheOut: { path: "paulexhale.mp3", sound: null as any },
-  paulHold: { path: "paulhold.mp3", sound: null as any },
-  endingBell: { path: "endingbell1.mp3", sound: null as any },
-  cueBell1: { path: "cuebell1.mp3", sound: null as any },
-  cueBell2: { path: "cuebell2.mp3", sound: null as any },
 };
 
 const preloadSound = async (id: SoundEffectId) => {
