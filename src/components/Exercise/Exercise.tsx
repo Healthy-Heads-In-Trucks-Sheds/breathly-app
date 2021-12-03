@@ -6,13 +6,11 @@
 
 import React, { FC, useState } from "react";
 import { Animated, StyleSheet, View } from "react-native";
-import KeepAwake from "react-native-keep-awake";
 import { useAppContext } from "../../context/AppContext";
 import { animate } from "../../utils/animate";
 import { buildExerciseSteps } from "../../utils/buildExerciseSteps";
 import { buttonAnimatorContentHeight } from "../ButtonAnimator/ButtonAnimator";
 import { ExerciseCircle } from "./ExerciseCircle";
-import { ExerciseComplete } from "./ExerciseComplete";
 import { ExerciseInterlude } from "./ExerciseInterlude";
 import { ExerciseTimer } from "./ExerciseTimer";
 import { useOnMount } from "../../hooks/useOnMount";
@@ -82,8 +80,6 @@ export const Exercise: FC<Props> = () => {
           />
         </Animated.View>
       )}
-      {status === "completed" && <ExerciseComplete />}
-      <KeepAwake />
     </View>
   );
 };
