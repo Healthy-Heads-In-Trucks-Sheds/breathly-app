@@ -5,7 +5,7 @@
  */
 
 import React, { FC, useState } from "react";
-import { Animated, StyleSheet } from "react-native";
+import { Animated, StyleSheet, ViewStyle } from "react-native";
 import { deviceWidth } from "../../config/constants";
 import { useOnMount } from "../../hooks/useOnMount";
 import { animate } from "../../utils/animate";
@@ -132,7 +132,7 @@ export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
     }),
   };
 
-  const circleAnimatedStyle = {
+  const circleAnimatedStyle: Animated.AnimatedProps<ViewStyle> = {
     transform: [
       interpolateScale(scaleAnimVal, {
         inputRange: [0, 1],
@@ -141,7 +141,7 @@ export const ExerciseCircle: FC<Props> = ({ steps, vibrationEnabled }) => {
     ],
   };
 
-  const contentAnimatedStyle = {
+  const contentAnimatedStyle: Animated.AnimatedProps<ViewStyle> = {
     opacity: textAnimVal.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1],

@@ -5,7 +5,7 @@
  */
 
 import React, { FC, useRef, useState } from "react";
-import { Animated, StyleSheet, Text } from "react-native";
+import { Animated, StyleSheet, Text, ViewStyle } from "react-native";
 import { useOnMount } from "../../hooks/useOnMount";
 import { animate } from "../../utils/animate";
 import { delay } from "../../utils/delay";
@@ -72,7 +72,7 @@ export const ExerciseInterlude: FC<Props> = ({ onComplete }) => {
       }),
     ],
   };
-  const subtitleAnimatedStyle = {
+  const subtitleAnimatedStyle: Animated.AnimatedProps<ViewStyle> = {
     opacity: subtitleAnimVal.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1],

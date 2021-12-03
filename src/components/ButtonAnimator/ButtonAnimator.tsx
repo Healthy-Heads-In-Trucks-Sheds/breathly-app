@@ -5,7 +5,7 @@
  */
 
 import React, { FC, useState } from "react";
-import { Animated, StyleSheet } from "react-native";
+import { Animated, StyleSheet, ViewStyle } from "react-native";
 import { deviceHeight } from "../../config/constants";
 import { images } from "../../config/images";
 import { useAppContext } from "../../context/AppContext";
@@ -86,7 +86,8 @@ export const ButtonAnimator: FC<Props> = ({ visible, onClosePress }) => {
       setStatus((prevStatus) => (prevStatus === "to-front" ? "front" : "back"));
     });
   };
-  const underlayAnimatedStyle = {
+
+  const underlayAnimatedStyle: Animated.AnimatedProps<ViewStyle> = {
     opacity: visibilityAnimVal.interpolate({
       inputRange: [0.99, 1],
       outputRange: [0, 1],
@@ -98,7 +99,8 @@ export const ButtonAnimator: FC<Props> = ({ visible, onClosePress }) => {
       }),
     ],
   };
-  const underlayChildrenAnimatedStyle = {
+
+  const underlayChildrenAnimatedStyle: Animated.AnimatedProps<ViewStyle> = {
     opacity: expandAnimVal.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1],
