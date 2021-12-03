@@ -5,11 +5,10 @@
  */
 
 import React, { FC, useState } from "react";
-import { Animated, StyleSheet, View } from "react-native";
+import { Animated, StyleSheet } from "react-native";
 import { useAppContext } from "../../context/AppContext";
 import { animate } from "../../utils/animate";
 import { buildExerciseSteps } from "../../utils/buildExerciseSteps";
-import { buttonAnimatorContentHeight } from "../ButtonAnimator/ButtonAnimator";
 import { ExerciseCircle } from "./ExerciseCircle";
 import { ExerciseInterlude } from "./ExerciseInterlude";
 import { ExerciseTimer } from "./ExerciseTimer";
@@ -63,7 +62,7 @@ export const Exercise: FC<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <>
       {status === "interlude" && (
         <ExerciseInterlude onComplete={handleInterludeComplete} />
       )}
@@ -80,15 +79,12 @@ export const Exercise: FC<Props> = () => {
           />
         </Animated.View>
       )}
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    height: buttonAnimatorContentHeight,
-  },
   content: {
-    height: buttonAnimatorContentHeight,
+    height: "100%",
   },
 });
