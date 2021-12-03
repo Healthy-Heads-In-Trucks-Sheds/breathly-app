@@ -8,7 +8,7 @@ const soundEffects = {
   lauraHold: { path: "laurahold.mp3", sound: null as any },
 };
 
-const preloadSound = async (id: SoundEffectId) => {
+const preloadSound = async (id: SoundEffectId): Promise<void> => {
   const soundEffect = soundEffects[id];
   return new Promise((resolve, reject) => {
     const sound: any = new ReactNativeSound(
@@ -50,7 +50,7 @@ export const initializeAudio = async () => {
   }
 };
 
-export const playSound = async (id: SoundEffectId) => {
+export const playSound = async (id: SoundEffectId): Promise<void> => {
   const soundEffect = soundEffects[id];
   return new Promise((resolve, reject) => {
     if (soundEffect.sound && soundEffect.sound.play) {
