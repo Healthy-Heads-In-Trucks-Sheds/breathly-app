@@ -53,9 +53,7 @@ export const ExerciseTimer: FC<Props> = ({ limit, onLimitReached }) => {
     }),
   };
 
-  const timerText = limit
-    ? formatTimer(limit / 1000 - elapsedTime)
-    : formatTimer(elapsedTime);
+  const timerText = formatTimer(elapsedTime);
 
   return (
     <Animated.View style={[styles.container, containerAnimatedStyle]}>
