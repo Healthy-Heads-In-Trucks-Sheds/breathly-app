@@ -15,7 +15,6 @@ import {
 } from "../../utils/interpolate";
 import { loopAnimations } from "../../utils/loopAnimations";
 import { ExerciseCircleDots } from "./ExerciseCircleDots";
-import { fontThin } from "../../config/fonts";
 import { playSound } from "../../services/sound";
 import { Step } from "../../types/Step";
 
@@ -233,6 +232,5 @@ export const defaultStyles = StyleSheet.create({
     fontSize: Math.floor(24),
     textAlign: "center",
     color: "white",
-    ...fontThin,
   },
 });
