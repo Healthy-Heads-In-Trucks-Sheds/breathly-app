@@ -10,8 +10,6 @@ import { useInterval } from "../../hooks/useInterval";
 import { useOnMount } from "../../hooks/useOnMount";
 import { animate } from "../../utils/animate";
 import { formatTimer } from "../../utils/formatTimer";
-import { buttonSize } from "../ButtonAnimator/ButtonAnimator";
-import { fontMono } from "../../config/fonts";
 
 export type Props = {
   styles?: typeof defaultStyles;
@@ -67,13 +65,10 @@ export const ExerciseTimer: FC<Props> = ({ limit, onLimitReached }) => {
 };
 
 export const defaultStyles = StyleSheet.create({
-  container: {
-    marginTop: buttonSize,
-  },
+  container: {},
   text: {
     textAlign: "center",
     fontSize: 26,
     color: "white",
-    ...fontMono,
   } as TextStyle,
 });
