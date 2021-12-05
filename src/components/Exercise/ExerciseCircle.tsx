@@ -16,12 +16,16 @@ import {
 import { loopAnimations } from "../../utils/loopAnimations";
 import { ExerciseCircleDots } from "./ExerciseCircleDots";
 import { playSound } from "../../services/sound";
+import { ButtonAnimator } from "../ButtonAnimator/ButtonAnimator";
 import { Step } from "../../types/Step";
 
 export type Props = {
   styles?: typeof defaultStyles;
   steps: Step[];
   vibrationEnabled: boolean;
+  elapsedTime: number;
+  minimumElapsedTime: number;
+  onClosePress: (isBreathingDone: boolean) => void;
 };
 
 const circleSize = deviceWidth * 0.8;
@@ -30,7 +34,9 @@ const fadeInAnimDuration = 400;
 export const ExerciseCircle: FC<Props> = ({
   styles = defaultStyles,
   steps,
-  vibrationEnabled,
+  elapsedTime,
+  minimumElapsedTime,
+  onClosePress,
 }) => {
   const [showUpAnimVal] = useState(new Animated.Value(0));
   const [scaleAnimVal] = useState(new Animated.Value(0));
@@ -184,6 +190,13 @@ export const ExerciseCircle: FC<Props> = ({
           />
         </Animated.View>
       </Animated.View>
+      <ButtonAnimator
+        visible={true}
+        onClosePress={() => {
+          const isBreathingDone = elapsedTime * 1000 >= minimumElapsedTime;
+          onClosePress(isBreathingDone);
+        }}
+      />
     </>
   );
 };

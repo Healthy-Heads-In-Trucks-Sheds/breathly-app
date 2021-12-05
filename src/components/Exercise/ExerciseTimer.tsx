@@ -14,11 +14,19 @@ import { formatTimer } from "../../utils/formatTimer";
 export type Props = {
   styles?: typeof defaultStyles;
   limit: number;
+  elapsedTime: number;
+  setElapsedTime: React.Dispatch<React.SetStateAction<number>>;
   onLimitReached: () => void;
 };
 
-export const ExerciseTimer: FC<Props> = ({ limit, onLimitReached }) => {
-  const [elapsedTime, setElapsedTime] = useState(0);
+export const ExerciseTimer: FC<Props> = ({
+  styles = defaultStyles,
+  limit,
+  elapsedTime,
+  setElapsedTime,
+  onLimitReached,
+}) => {
+  // const [elapsedTime, setElapsedTime] = useState(0);
   const [opacityAnimVal] = useState(new Animated.Value(0));
 
   const increaseElapsedTime = () => {
