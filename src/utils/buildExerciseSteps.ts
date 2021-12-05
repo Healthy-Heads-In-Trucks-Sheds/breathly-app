@@ -11,28 +11,28 @@ import { Step } from "../types/Step";
 export const buildExerciseSteps = (durations: number[]): Step[] => [
   {
     id: "inhale",
-    label: "Inhale",
+    label: "inhale",
     duration: durations[0] * 1000,
     showDots: false,
     skipped: durations[0] === 0,
   },
   {
     id: "afterInhale",
-    label: "Hold",
+    label: "hold",
     duration: durations[1] * 1000,
     showDots: true,
     skipped: durations[1] === 0,
   },
   {
     id: "exhale",
-    label: "Exhale",
+    label: "exhale",
     duration: durations[2] * 1000,
     showDots: false,
     skipped: durations[2] === 0,
   },
   {
     id: "afterExhale",
-    label: "Hold",
+    label: "hold",
     duration: durations[3] * 1000,
     showDots: true,
     skipped: durations[3] === 0,
