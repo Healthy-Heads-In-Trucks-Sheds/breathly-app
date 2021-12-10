@@ -41,7 +41,7 @@ export const ExerciseCircle: FC<Props> = ({
   const [showUpAnimVal] = useState(new Animated.Value(0));
   const [scaleAnimVal] = useState(new Animated.Value(0));
   const [textAnimVal] = useState(new Animated.Value(1));
-  const [cirlceMinAnimVal] = useState(new Animated.Value(0));
+  const [circleMinAnimVal] = useState(new Animated.Value(0));
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const activeSteps = steps.filter((x) => !x.skipped);
   const currentStep = activeSteps[currentStepIndex];
@@ -66,12 +66,12 @@ export const ExerciseCircle: FC<Props> = ({
     ]);
   };
 
-  const showCirlceMinAnimation = animate(cirlceMinAnimVal, {
+  const showCircleMinAnimation = animate(circleMinAnimVal, {
     toValue: 1,
     duration: fadeInAnimDuration,
   });
 
-  const hideCirlceMinAnimation = animate(cirlceMinAnimVal, {
+  const hideCircleMinAnimation = animate(circleMinAnimVal, {
     toValue: 0,
     duration: fadeInAnimDuration,
   });
@@ -86,15 +86,15 @@ export const ExerciseCircle: FC<Props> = ({
     const step = activeSteps[stepIndex];
     if (step.id === "exhale") {
       playSound("lauraBreatheOut");
-      showCirlceMinAnimation.start();
+      showCircleMinAnimation.start();
     } else if (step.id === "inhale") {
       playSound("lauraBreatheIn");
 
-      hideCirlceMinAnimation.start();
+      hideCircleMinAnimation.start();
     } else if (step.id === "afterExhale") {
       playSound("lauraHold");
 
-      hideCirlceMinAnimation.start();
+      hideCircleMinAnimation.start();
     } else if (step.id === "afterInhale") {
       playSound("lauraHold");
     }
@@ -130,8 +130,8 @@ export const ExerciseCircle: FC<Props> = ({
     return () => {
       cleanUpAnimationsSteps && cleanUpAnimationsSteps();
       showUpAnimation.stop();
-      showCirlceMinAnimation.stop();
-      hideCirlceMinAnimation.stop();
+      showCircleMinAnimation.stop();
+      hideCircleMinAnimation.stop();
     };
   });
 
@@ -169,7 +169,7 @@ export const ExerciseCircle: FC<Props> = ({
   };
 
   const circleMinAnimatedStyle = {
-    opacity: cirlceMinAnimVal.interpolate({
+    opacity: circleMinAnimVal.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1],
     }),
