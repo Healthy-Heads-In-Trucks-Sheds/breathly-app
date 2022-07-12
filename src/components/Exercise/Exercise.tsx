@@ -5,6 +5,7 @@
  */
 
 import React, { FC, useState } from "react";
+import KeepAwake from "react-native-keep-awake";
 import { Animated, StyleSheet } from "react-native";
 import { animate } from "../../utils/animate";
 import { buildExerciseSteps } from "../../utils/buildExerciseSteps";
@@ -110,6 +111,7 @@ export const Exercise: FC<Props> = ({
           </Animated.View>
         </Animated.View>
       )}
+      <KeepAwake />
     </>
   );
 };
